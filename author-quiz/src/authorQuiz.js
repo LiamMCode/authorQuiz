@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import './bootstrap.min.css';
 import logo from './logo.svg';
 import './App.css';
@@ -36,6 +37,17 @@ function Turn({author, books, highlight, onAnswerSelected}) {
       {books.map((title) => <Book title ={title} key={title} onClick={onAnswerSelected} />)}
     </div>
   </div>);
+}
+Turn.propTypes = {
+  author: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    imageSource: PropTypes.string.isRequired,
+    books: PropTypes.arrayOf(PropTypes.string).isRequired
+  }),
+  books: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onAnswerSelected: PropTypes.func.isRequired,
+  highlight: PropTypes.string.isRequired
 }
 
 function Continue() {

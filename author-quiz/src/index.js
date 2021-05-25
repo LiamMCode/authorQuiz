@@ -4,6 +4,7 @@ import './index.css';
 import AuthorQuiz from './authorQuiz';
 import reportWebVitals from './reportWebVitals';
 import {shuffle, sample} from 'underscore';
+import { BrowserRouter, Route} from 'react-router-dom';
 
 const authors = [
   {
@@ -67,8 +68,13 @@ function onAnswerSelected(answer) {
   state.highlight = isCorrect ? 'correct' : 'wrong';
   render();
 }
+
+function App() {
+  return <AuthorQuiz {...state} onAnswerSelected={onAnswerSelected} />;
+}
+
 function render() {
-  ReactDOM.render(<AuthorQuiz {...state} onAnswerSelected={onAnswerSelected}/>, document.getElementById('root')
+  ReactDOM.render(<App />, document.getElementById('root')
   );
 }
 render();
